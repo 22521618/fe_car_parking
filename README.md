@@ -1,90 +1,92 @@
-# Car Parking Management System (Frontend Web-Android-Ios is available)
+# Hệ Thống Quản Lý Bãi Đỗ Xe (Frontend Web-Android-iOS đã sẵn sàng)
 
-## Overview
-A modern, responsive Flutter application designed for managing smart car parking systems. This application provides a user-friendly interface for administrators to monitor parking status in real-time, manage residents and vehicles, and view detailed access logs.
+## Tổng Quan
+Một ứng dụng Flutter hiện đại, đáp ứng (responsive) được thiết kế để quản lý hệ thống bãi đỗ xe thông minh. Ứng dụng này cung cấp giao diện thân thiện cho quản trị viên để giám sát trạng thái bãi đỗ xe theo thời gian thực, quản lý cư dân và phương tiện, cũng như xem nhật ký ra vào chi tiết.
 
-## Features
+## Tính Năng
 
-### 🖥️ Dashboard
-- **Real-time Statistics**: View total residents, vehicles, active sessions, and daily entry/exit counts.
-- **Interactive Charts**: Visual breakdown of daily traffic (Entries vs Exits).
-- **Live Feed**: Real-time updates of vehicles entering and exiting the premises.
+### 🖥️ Bảng Điều Khiển (Dashboard)
+- **Thống kê thời gian thực**: Xem tổng số cư dân, phương tiện, phiên đỗ xe đang hoạt động và số lượt ra/vào trong ngày.
+- **Biểu đồ tương tác**: Phân tích trực quan lưu lượng giao thông hàng ngày (Vào vs Ra).
+- **Nguồn cấp dữ liệu trực tiếp (Live Feed)**: Cập nhật thời gian thực các phương tiện ra vào khu vực.
 
-### 👥 Management
-- **Residents**: Add, edit, and remove resident information.
-- **Vehicles**: Register vehicles and link them to residents. Support for multiple vehicle types (Car, Motorbike).
+### 👥 Quản Lý
+- **Cư dân**: Thêm, sửa và xóa thông tin cư dân.
+- **Phương tiện**: Đăng ký phương tiện và liên kết với cư dân. Hỗ trợ nhiều loại phương tiện (Ô tô, Xe máy).
 
-### 📊 Monitoring
-- **Parking History**: Detailed history of completed parking sessions with duration and images.
-- **Access Logs**: comprehensive log of all access attempts, including authorized and unauthorized entries, with timestamps and captured images.
+### 📊 Giám Sát
+- **Lịch sử đỗ xe**: Lịch sử chi tiết các phiên đỗ xe đã hoàn tất với thời gian và hình ảnh.
+- **Nhật ký ra vào**: Nhật ký toàn diện về tất cả các lần truy cập, bao gồm cả các lần vào được ủy quyền và không được ủy quyền, kèm theo dấu thời gian và hình ảnh chụp được.
 
-### 🎨 UI/UX
-- **Responsive Design**: Seamless experience across Desktop Web (>900px) and Mobile devices.
-  - **Web**: Permanent Sidebar navigation and expanded tables.
-  - **Mobile**: Drawer navigation and optimized card/list views.
-- **Modern Theme**: Vibrant color palette, gradients, and rounded aesthetics.
+### 🎨 Giao Diện (UI/UX)
+- **Thiết kế Responsive**: Trải nghiệm liền mạch trên Web Desktop (>900px) và thiết bị Di động.
+  - **Web**: Thanh điều hướng bên (Sidebar) cố định và bảng dữ liệu mở rộng.
+  - **Mobile**: Điều hướng ngăn kéo (Drawer) và chế độ xem thẻ/danh sách tối ưu hóa.
+- **Giao diện hiện đại**: Bảng màu sống động, gradient và thẩm mỹ bo tròn.
 
-## Tech Stack
+## Công Nghệ Sử Dụng
 - **Framework**: [Flutter](https://flutter.dev/)
-- **State Management**: [flutter_bloc](https://pub.dev/packages/flutter_bloc)
-- **Networking**: 
+- **Quản lý trạng thái**: [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- **Kết nối mạng**: 
   - [dio](https://pub.dev/packages/dio) (HTTP Requests)
-  - [socket_io_client](https://pub.dev/packages/socket_io_client) (Real-time WebSockets)
-- **UI Components**:
-  - [fl_chart](https://pub.dev/packages/fl_chart) (Charts)
-  - [data_table_2](https://pub.dev/packages/data_table_2) (Advanced Tables)
-  - [google_fonts](https://pub.dev/packages/google_fonts) (Typography)
+  - [socket_io_client](https://pub.dev/packages/socket_io_client) (WebSockets thời gian thực)
+- **Thành phần UI**:
+  - [fl_chart](https://pub.dev/packages/fl_chart) (Biểu đồ)
+  - [data_table_2](https://pub.dev/packages/data_table_2) (Bảng dữ liệu nâng cao)
+  - [google_fonts](https://pub.dev/packages/google_fonts) (Phông chữ)
 
-## Getting Started
+## Bắt Đầu
 
-### Prerequisites
-- Flutter SDK (Latest Stable)
+### Yêu Cầu Tiên Quyết
+- Flutter SDK (Bản ổn định mới nhất)
 - Dart SDK
 
-### Installation
+### Cài Đặt
 
-1. **Clone the repository**
+1. **Clone repository**
    ```bash
    git clone <repository-url>
    cd fe_car_parking
    ```
 
-2. **Install dependencies**
+2. **Cài đặt các gói phụ thuộc**
    ```bash
    flutter pub get
    ```
 
-### Running the Application
+### Chạy Ứng Dụng
 
-#### 🌐 Web (Recommended for Development)
-To avoid CORS (Cross-Origin Resource Sharing) issues when connecting to a local backend, run Chrome with web security disabled:
+#### 🌐 Web (Khuyên dùng cho Phát triển)
+Để tránh lỗi CORS (Cross-Origin Resource Sharing) khi kết nối với backend cục bộ, hãy chạy Chrome với cờ tắt bảo mật web:
 
 ```bash
 flutter run -d chrome --web-browser-flag "--disable-web-security"
 ```
 
 #### 📱 Android Emulator
-If you prefer running on an Android Emulator:
+Nếu bạn thích chạy trên Android Emulator:
 
-1. **Configure Base URL**: 
-   Open `lib/core/constants.dart` and ensure the `baseUrl` is set to the Android emulator's loopback address:
+1. **Cấu hình Base URL**: 
+   Mở `lib/core/constants.dart` và đảm bảo `baseUrl` được đặt thành địa chỉ loopback của Android emulator:
    ```dart
    static const String baseUrl = 'http://10.0.2.2:3000';
    ```
 
-2. **Run the app**:
+2. **Chạy ứng dụng**:
    ```bash
    flutter run
    ```
 
-## Project Structure
+## Cấu Trúc Dự Án
 
 ```
 lib/
-├── blocs/           # Business Logic Components (State Management)
-├── core/            # Core configuration (API, Theme, Constants)
-├── models/          # Data Models
-├── screens/         # UI Screens (Dashboard, Residents, etc.)
-├── widgets/         # Reusable UI Widgets
-└── main.dart        # Application Entry Point
+├── blocs/           # Business Logic Components (Quản lý trạng thái)
+├── core/            # Cấu hình cốt lõi (API, Theme, Constants)
+├── models/          # Mô hình dữ liệu (Data Models)
+├── screens/         # Màn hình UI (Dashboard, Residents, v.v.)
+├── widgets/         # Các Widget UI tái sử dụng
+└── main.dart        # Điểm khởi chạy ứng dụng
 ```
+
+
