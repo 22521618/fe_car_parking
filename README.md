@@ -1,4 +1,4 @@
-# Hệ Thống Quản Lý Bãi Đỗ Xe (Frontend Web-Android-iOS đã sẵn sàng)
+# Hệ Thống Quản Lý Bãi Đỗ Xe (Frontend Phù hợp cho cả Web-Android-iOS)
 
 ## Tổng Quan
 Một ứng dụng Flutter hiện đại, đáp ứng (responsive) được thiết kế để quản lý hệ thống bãi đỗ xe thông minh. Ứng dụng này cung cấp giao diện thân thiện cho quản trị viên để giám sát trạng thái bãi đỗ xe theo thời gian thực, quản lý cư dân và phương tiện, cũng như xem nhật ký ra vào chi tiết.
