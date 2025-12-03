@@ -2,7 +2,7 @@
 
 ## 1. Lý do chọn giải pháp
 
-Chúng tôi lựa chọn bộ công nghệ (stack) này dựa trên các tiêu chí về hiệu năng, khả năng mở rộng và trải nghiệm người dùng:
+Bọn em lựa chọn bộ công nghệ (stack) này dựa trên các tiêu chí về hiệu năng, khả năng mở rộng và trải nghiệm người dùng:
 
 *   **Flutter**:
     *   **Đa nền tảng**: Cho phép phát triển ứng dụng cho cả Web, Android và iOS từ một mã nguồn duy nhất, giúp tiết kiệm thời gian và chi phí bảo trì.
@@ -31,13 +31,13 @@ graph TD
     end
 
     subgraph Business Logic Layer [Lớp Nghiệp Vụ]
-        Bloc[Blocs (DashboardBloc, etc.)]
+        Bloc["Blocs (DashboardBloc, etc.)"]
     end
 
     subgraph Data Layer [Lớp Dữ Liệu]
         Repo[Repositories / Data Providers]
-        API[ApiClient (Dio)]
-        Socket[SocketService (Socket.IO)]
+        API["ApiClient (Dio)"]
+        Socket["SocketService (Socket.IO)"]
     end
 
     subgraph Backend [Backend Server]
