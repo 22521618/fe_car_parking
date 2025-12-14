@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/api_client.dart';
 import '../../core/constants.dart';
 import '../../models/vehicle.dart';
+import '../../models/resident.dart';
 import 'vehicles_event.dart';
 import 'vehicles_state.dart';
 
@@ -10,6 +11,7 @@ class VehiclesBloc extends Bloc<VehiclesEvent, VehiclesState> {
 
   VehiclesBloc({required this.apiClient}) : super(const VehiclesState()) {
     on<LoadVehicles>(_onLoadVehicles);
+    on<LoadResidents>(_onLoadResidents);
     on<RegisterVehicle>(_onRegisterVehicle);
     on<UpdateVehicle>(_onUpdateVehicle);
     on<DeleteVehicle>(_onDeleteVehicle);
@@ -35,6 +37,25 @@ class VehiclesBloc extends Bloc<VehiclesEvent, VehiclesState> {
       emit(state.copyWith(status: VehiclesStatus.loaded, vehicles: vehicles));
     } catch (e) {
       emit(state.copyWith(status: VehiclesStatus.error, error: e.toString()));
+    }
+  }
+
+  Future<void> _onLoadResidents(
+    LoadResidents event,
+    Emitter<VehiclesState> emit,
+  ) async {
+    // Keep current status or set to loading if you want global loading indicator
+    // But usually loading residents is a background thing or secondary
+    try {
+      final response = await apiClient.get(
+        AppConstants.residentsEndpoint,
+      );
+      final List<dynamic> data = response.data;
+      final residents = data.map((json) => Resident.fromJson(json)).toList();
+      emit(state.copyWith(residents: residents));
+    } catch (e) {
+      // Handle error purely for residents if needed, or just log
+      print('Error loading residents: $e');
     }
   }
 

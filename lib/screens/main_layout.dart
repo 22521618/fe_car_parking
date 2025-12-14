@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../widgets/sidebar.dart';
 import 'dashboard_screen.dart';
 import 'residents_screen.dart';
 import 'vehicles_screen.dart';
 import 'parking_history_screen.dart';
 import 'access_logs_screen.dart';
-import '../blocs/dashboard/dashboard_bloc.dart';
-import '../blocs/dashboard/dashboard_event.dart';
+import 'realtime_screen.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({super.key});
@@ -22,13 +21,13 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   void initState() {
     super.initState();
-    context.read<DashboardBloc>().add(LoadDashboardStats());
   }
 
   final List<Widget> _screens = [
     const DashboardScreen(),
     const ResidentsScreen(),
     const VehiclesScreen(),
+    const RealtimeScreen(),
     const ParkingHistoryScreen(),
     const AccessLogsScreen(),
   ];
@@ -37,6 +36,7 @@ class _MainLayoutState extends State<MainLayout> {
     'Dashboard',
     'Residents',
     'Vehicles',
+    'Live Monitor',
     'Parking History',
     'Access Logs',
   ];

@@ -29,8 +29,9 @@ class Sidebar extends StatelessWidget {
           _buildNavItem(context, 0, Icons.dashboard, 'Dashboard'),
           _buildNavItem(context, 1, Icons.people, 'Residents'),
           _buildNavItem(context, 2, Icons.directions_car, 'Vehicles'),
-          _buildNavItem(context, 3, Icons.history, 'Parking History'),
-          _buildNavItem(context, 4, Icons.security, 'Access Logs'),
+          _buildNavItem(context, 3, Icons.monitor_heart, 'Live Monitor'),
+          _buildNavItem(context, 4, Icons.history, 'Parking History'),
+          _buildNavItem(context, 5, Icons.security, 'Access Logs'),
         ],
       ),
     );

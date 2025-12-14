@@ -17,6 +17,10 @@ class LoadVehicles extends VehiclesEvent {
   List<Object> get props => [licensePlate ?? ''];
 }
 
+class LoadResidents extends VehiclesEvent {
+  const LoadResidents();
+}
+
 class RegisterVehicle extends VehiclesEvent {
   final Vehicle vehicle;
 

@@ -18,6 +18,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
   void initState() {
     super.initState();
     context.read<VehiclesBloc>().add(const LoadVehicles());
+    context.read<VehiclesBloc>().add(const LoadResidents());
   }
 
   @override
@@ -185,11 +186,32 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                   validator: (v) => v!.isEmpty ? 'Required' : null,
                   onSaved: (v) => licensePlate = v!,
                 ),
-                TextFormField(
-                  initialValue: residentId,
-                  decoration: const InputDecoration(labelText: 'Resident ID'),
-                  validator: (v) => v!.isEmpty ? 'Required' : null,
-                  onSaved: (v) => residentId = v!,
+                // TextFormField(
+                //   initialValue: residentId,
+                //   decoration: const InputDecoration(labelText: 'Resident ID'),
+                //   validator: (v) => v!.isEmpty ? 'Required' : null,
+                //   onSaved: (v) => residentId = v!,
+                // ),
+                BlocBuilder<VehiclesBloc, VehiclesState>(
+                  builder: (context, state) {
+                    return DropdownButtonFormField<String>(
+                      value: residentId.isNotEmpty ? residentId : null,
+                      decoration: const InputDecoration(labelText: 'Resident'),
+                      items: state.residents.map((resident) {
+                        return DropdownMenuItem(
+                          value: resident.id,
+                          child: Text(
+                              '${resident.fullName} (${resident.apartmentNumber})'),
+                        );
+                      }).toList(),
+                      onChanged: (v) => setState(() {
+                        residentId = v!;
+                      }),
+                      validator: (v) =>
+                          v == null || v.isEmpty ? 'Required' : null,
+                      onSaved: (v) => residentId = v!,
+                    );
+                  },
                 ),
                 DropdownButtonFormField<String>(
                   value: vehicleType,
