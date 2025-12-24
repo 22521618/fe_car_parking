@@ -1,6 +1,7 @@
 class AccessLog {
   final String id;
   final String licensePlate;
+  final String? cardId;
   final String action;
   final DateTime timestamp;
   final String raspberryPiId;
@@ -12,6 +13,7 @@ class AccessLog {
   AccessLog({
     required this.id,
     required this.licensePlate,
+    this.cardId,
     required this.action,
     required this.timestamp,
     required this.raspberryPiId,
@@ -25,6 +27,7 @@ class AccessLog {
     return AccessLog(
       id: json['_id'] ?? '',
       licensePlate: json['licensePlate'] ?? '',
+      cardId: json['cardId'] ?? '',
       action: json['action'] ?? '',
       timestamp:
           DateTime.parse(json['timestamp'] ?? DateTime.now().toIso8601String()),

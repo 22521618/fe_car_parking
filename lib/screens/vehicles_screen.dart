@@ -88,10 +88,11 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                       child: DataTable2(
                         columnSpacing: 12,
                         horizontalMargin: 12,
-                        minWidth: 800, // Ensure scrolling on small screens
+                        minWidth: 900, // Ensure scrolling on small screens
                         columns: const [
                           DataColumn2(
                               label: Text('License Plate'), size: ColumnSize.L),
+                          DataColumn(label: Text('Card ID')),
                           DataColumn(label: Text('Owner')),
                           DataColumn(label: Text('Type')),
                           DataColumn(label: Text('Brand')),
@@ -104,6 +105,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                             DataCell(Text(vehicle.licensePlate,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold))),
+                            DataCell(Text(vehicle.cardId ?? '-')),
                             DataCell(
                                 Text(vehicle.resident?.fullName ?? 'Unknown')),
                             DataCell(Text(vehicle.vehicleType)),
@@ -165,6 +167,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
     final isEditing = vehicle != null;
     final formKey = GlobalKey<FormState>();
     String licensePlate = vehicle?.licensePlate ?? '';
+    String? cardId = vehicle?.cardId;
     String residentId = vehicle?.residentId ?? '';
     String vehicleType = vehicle?.vehicleType ?? 'car';
     String brand = vehicle?.brand ?? '';
@@ -185,6 +188,11 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                   decoration: const InputDecoration(labelText: 'License Plate'),
                   validator: (v) => v!.isEmpty ? 'Required' : null,
                   onSaved: (v) => licensePlate = v!,
+                ),
+                TextFormField(
+                  initialValue: cardId,
+                  decoration: const InputDecoration(labelText: 'Card ID'),
+                  onSaved: (v) => cardId = v?.isNotEmpty == true ? v : null,
                 ),
                 // TextFormField(
                 //   initialValue: residentId,
@@ -251,6 +259,7 @@ class _VehiclesScreenState extends State<VehiclesScreen> {
                 final newVehicle = Vehicle(
                   id: vehicle?.id ?? '',
                   licensePlate: licensePlate,
+                  cardId: cardId,
                   residentId: residentId,
                   vehicleType: vehicleType,
                   brand: brand,

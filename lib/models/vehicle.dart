@@ -3,6 +3,7 @@ import 'resident.dart';
 class Vehicle {
   final String id;
   final String licensePlate;
+  final String? cardId;
   final Resident? resident;
   final String residentId; // For creation/update
   final String vehicleType;
@@ -13,6 +14,7 @@ class Vehicle {
   Vehicle({
     required this.id,
     required this.licensePlate,
+    this.cardId,
     this.resident,
     required this.residentId,
     required this.vehicleType,
@@ -25,6 +27,7 @@ class Vehicle {
     return Vehicle(
       id: json['_id'] ?? '',
       licensePlate: json['licensePlate'] ?? '',
+      cardId: json['cardId'],
       resident: json['residentId'] is Map<String, dynamic>
           ? Resident.fromJson(json['residentId'])
           : null,
@@ -42,6 +45,7 @@ class Vehicle {
     return {
       '_id': id,
       'licensePlate': licensePlate,
+      if (cardId != null) 'cardId': cardId,
       'residentId': residentId,
       'vehicleType': vehicleType,
       'brand': brand,

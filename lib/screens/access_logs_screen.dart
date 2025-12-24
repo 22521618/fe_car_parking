@@ -57,6 +57,7 @@ class _AccessLogsScreenState extends State<AccessLogsScreen> {
                         columns: const [
                           DataColumn2(
                               label: Text('License Plate'), size: ColumnSize.L),
+                          DataColumn(label: Text('Card ID')),
                           DataColumn(label: Text('Action')),
                           DataColumn(label: Text('Timestamp')),
                           DataColumn(label: Text('Pi ID')),
@@ -70,6 +71,7 @@ class _AccessLogsScreenState extends State<AccessLogsScreen> {
                             DataCell(Text(log.licensePlate,
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold))),
+                            DataCell(Text(log.cardId ?? '-')),
                             DataCell(Text(log.action.toUpperCase())),
                             DataCell(Text(dateFormat.format(log.timestamp))),
                             DataCell(Text(log.raspberryPiId)),
